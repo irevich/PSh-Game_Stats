@@ -9,7 +9,7 @@ const PROFILE_IMAGE_NAME = 'user_profile_image.jpg'
 
 class PlayerApi{
 
-    static async insertPlayer(client){
+    static async insertPlayer(client,playerNumber){
         //First, we get the nickname and the profile image from the randomUser api
 
         request({url:randomUserApiUrl}, async (err,res)=>{
@@ -43,8 +43,21 @@ class PlayerApi{
 
             //Finally, we insert a stat for that player using the id created
             await StatApi.insertStat(client,playerId);
+
+            console.log(`Player number ${playerNumber} inserted`);
             
         })
+    }
+
+    static async getPlayersRanking(client,limit){
+        try{
+            let results = await client.query(`SELECT nickname,score FROM player JOIN stat ON player.player_id = stat.player 
+            ORDER BY score DESC LIMIT ${limit}`);
+            return results.rows;
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 
  

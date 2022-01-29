@@ -7,8 +7,6 @@ class StatApi{
         //Then, we get a random score for the player (from 1 to 100)
         const score = ApiUtils.getRandomNumberInRange(1,101);
 
-        console.log(currentDate);
-
         //Finally, we insert the stat in the db
 
         await client.query(`insert into stat (player,score,creation_date) values (${playerId},${score},to_timestamp(${currentDate} / 1000.0))`);
