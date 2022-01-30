@@ -11,7 +11,7 @@ function App() {
 
   const fetchPlayersList = async () => {
     const { data } = await Axios.get(
-        "http://localhost:3000/api/players/ranking"
+        "http://localhost:5000/api/players/ranking"
     );
     const playersList = data;
     setPlayersList(playersList);
@@ -44,12 +44,18 @@ function App() {
     }
 
 
+    let exportCsvButton=<button className='btn btn-success' disabled={true}>Export to CSV</button>;
+
+    if(hasLoaded && playersList.players_ranking.length!==0){
+      exportCsvButton= <CSVLink {...csvReport}><button className='btn btn-success'>Export to CSV</button></CSVLink>
+    }
+
     return hasLoaded ? (
     <div className='App'>
       <h1 id="PageTitle">PSh-Game Stats</h1>
       <PlayersRankingList list={playersList.players_ranking} last_modified_date={playersList.last_modified_date}/>
       <div>
-        <CSVLink {...csvReport}><button className='btn btn-success'>Export to CSV</button></CSVLink>
+        {exportCsvButton}
       </div>
     </div>
     ) :

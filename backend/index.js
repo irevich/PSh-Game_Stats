@@ -5,7 +5,7 @@ const cron = require('node-cron');
 
 
 app.use(express.json());
-app.use(cors({origin:`http://localhost:5000`}));
+app.use(cors());
 
 //IMPORTS
 
@@ -15,7 +15,7 @@ const PlayerApi = require('./player');
 //CONSTANTS
 
 const PLAYERS_MIN = 0;
-const PLAYERS_MAX = 6;
+const PLAYERS_MAX = 11;
 const TIME_IN_MINUTES_TO_INSERT_PLAYERS = 5;
 const TOP_PLAYERS_RANKING = 10;
 
@@ -70,5 +70,5 @@ app.get("/api/players/ranking",async (req,res)=>{
 
 
 //PORT
-const port = 3000 ;
+const port = 5000 ;
 app.listen(port, ()=>console.log(`API listening to port ${port} . . .`));
