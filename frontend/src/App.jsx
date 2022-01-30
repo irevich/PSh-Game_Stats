@@ -20,6 +20,13 @@ function App() {
 
     useEffect(() => {
      fetchPlayersList();
+
+     //We call the API to refresh the top every 10 seconds
+
+     const interval = setInterval(() => fetchPlayersList(), 10000)
+     return () => {
+       clearInterval(interval);
+     }
     }, []);
 
 
