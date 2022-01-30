@@ -5,7 +5,7 @@ const cron = require('node-cron');
 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({origin:`http://localhost:5000`}));
 
 //IMPORTS
 
@@ -70,5 +70,5 @@ app.get("/api/players/ranking",async (req,res)=>{
 
 
 //PORT
-const port = process.env.PORT || 3000 ;
+const port = 3000 ;
 app.listen(port, ()=>console.log(`API listening to port ${port} . . .`));

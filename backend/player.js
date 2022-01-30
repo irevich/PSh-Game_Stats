@@ -51,8 +51,7 @@ class PlayerApi{
 
     static async getPlayersRanking(client,limit){
         try{
-            let results = await client.query(`SELECT nickname,score FROM player JOIN stat ON player.player_id = stat.player 
-            ORDER BY score DESC LIMIT ${limit}`);
+            let results = await client.query(`SELECT nickname,score FROM player JOIN stat ON player.player_id = stat.player ORDER BY score DESC LIMIT ${limit}`);
             return results.rows;
         }
         catch(e){
