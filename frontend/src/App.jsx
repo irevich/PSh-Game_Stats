@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import Axios from 'axios'
 import './App.css';
 import PlayersRankingList from './components/PlayersRankingList';
+import {CSVLink} from 'react-csv'
 
 function App() {
 
@@ -29,11 +30,27 @@ function App() {
      }
     }, []);
 
+    //CSV INFO
+
+    const csvHeaders = [
+      {label : 'Nickname', key : 'nickname'},
+      {label : 'Score' , key : 'score'}
+    ];
+
+    const csvReport = {
+      filename : 'PSh-Game_report.csv',
+      headers : csvHeaders,
+      data : playersList.players_ranking
+    }
+
 
     return hasLoaded ? (
     <div className='App'>
       <h1 id="PageTitle">PSh-Game Stats</h1>
       <PlayersRankingList list={playersList.players_ranking} last_modified_date={playersList.last_modified_date}/>
+      <div>
+        <CSVLink {...csvReport}><button className='btn btn-success'>Export to CSV</button></CSVLink>
+      </div>
     </div>
     ) :
     <p>Loading . . .</p>
