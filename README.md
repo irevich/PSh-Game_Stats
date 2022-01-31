@@ -152,10 +152,7 @@ By default, this one is executed in port 3000 or in the port where it was define
 - $env:PORT=7000 (Windows)
 - export PORT=7000 (Linux/Mac)
 
-Have in mind that the port where the frontend will be executed must be different from the port where the backend is currently executing (by default in port 5000). Otherwise you will have a conflict between them. Anyway, if by the moment you run the frontend it detects that is trying to use the same port as the backend, you will be notified in the console with a message like this :
-                                        "Something is already running on port XXXX"
-
-And it will give you the chance of executing the frontend on a different port. In that case you put "yes" or "y" in console, an automatically it will execute the frontend in another port (usually the backend's port + 1), however, it is better to prevent this doing the explained above
+Have in mind that the port where the frontend will be executed must be different from the port where the backend is currently executing (by default in port 5000). Otherwise you will have a conflict between them. Anyway, if by the moment you run the frontend it detects that is trying to use the same port as the backend, you will be notified in the console with a message that says "Something is already running on port PORT", with PORT being the port you want to execute the frontend, and it will give you the chance of executing the frontend on a different port. In that case you put "yes" or "y" in console, an automatically it will execute the frontend in another port (usually the backend's port + 1), however, it is better to prevent this doing the explained above
 
 Also, the project asumes that the API is executed in port 5000, but in case you have executed the API on a different port, you must go to the "App.jsx" file in frontend/src directory, and in "fetchPlayersList" variable change the port in the link requested in the Axios.get (line 14) to the port where the API is executing
 
