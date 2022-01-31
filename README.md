@@ -9,7 +9,7 @@
 - [Index](#index)
 - [Persistency](#persistency)
     - [Database used and previous considerations](#database-used-and-previous-considerations)
-    - [Database's tables creation](#database-creation)
+    - [Database's tables creation](#database's-tables-creation)
 - [Backend(API)](#backend(api))
     - [Description](#backend-description)
     - [Execution](#backend-execution)
@@ -37,6 +37,7 @@ After doing that, we are ready for the next step that is creating the tables and
 First of all, you must have node installed to go on with the execution of the project.
 
 If you do, in the terminal of the IDE where you have opened the project, and in the root folder of these one, execute the following commands:
+ - cd backend
  - cd .\create_tables_db\
  - npm install
  - node .\import_postgres.js
