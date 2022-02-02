@@ -24,13 +24,13 @@
 The database used was PostgreSQL
 
 To execute the project, first of all you must have Postgres installed locally, and there create a database called "pshDevExamDB", where all the data that the API is going to manage will be storaged. You can do it by executing these commands on a terminal (Linux) or CMD (Windows) :
- - psql -U postgres -h localhost (Then you put your password) (If your user is not "postgres", you have to put your user)
+ - psql -U postgres -h localhost (Then you put your password. If your user is not "postgres", you have to put your user)
  - create database pshDevExamDB;
  - \l ( to check if it was created succesfully)
 
-After you have done that, you will have to go to the js file "api_utils", and in the function "getPostgreSQLConnection()", who is responsible of connecting the API with the database that we have just created, you have to put your password, your user, and in case you run postgres in a different port than 5432, you have to change that too.
+After you have done that, you will have to go to the js file "api_utils" in the "backend" folder, and in the function "getPostgreSQLConnection()", who is responsible of connecting the API with the database that we have just created, you have to put your password, your user, and in case you run postgres in a different port than 5432, you have to change that too.
 
-After doing that, we are ready for the next step that is creating the tables and the default data of the database.
+After doing that, we are ready for the next step that is creating the tables of the database.
 
 ### Database's tables creation
 
@@ -42,7 +42,7 @@ If you do, in the terminal of the IDE where you have opened the project, and in 
  - npm install
  - node .\import_postgres.js
 
-This commands will create the tables in database. To see the tables and their fields more in detail, you can go to the file "create_tables_postgres.sql" in the "import_tables_db" folder. The "import_postgres.js" script basically executes that SQL file.
+This commands will create the tables in database. To see the tables and their fields more in detail, you can go to the file "create_tables_postgres.sql" in the "create_tables_db" folder, inside the "backend" directory. The "import_postgres.js" script basically executes that SQL file.
 
 Once you have executed this commands, you will see in the terminal the following messages :
 - "Connected to PostgreSQL database"
@@ -79,7 +79,7 @@ insert X players in the database, with X in the range previously mentioned. Then
 
 An example of this one is this : 
 
-                                    {
+                                {
                                     "players_ranking": [
                                     {
                                         "nickname": "ms_alisa_lassila",
@@ -123,7 +123,7 @@ An example of this one is this :
                                     }
                                     ],
                                     "last_modified_date": "Mon Jan 31 2022 02:49:07 GMT-0300 (Argentina Standard Time)"
-                                    }
+                                }
 
 ### Execution
 
@@ -152,7 +152,7 @@ By default, this one is executed in port 3000 or in the port where it was define
 - $env:PORT=7000 (Windows)
 - export PORT=7000 (Linux/Mac)
 
-Have in mind that the port where the frontend will be executed must be different from the port where the backend is currently executing (by default in port 5000). Otherwise you will have a conflict between them. Anyway, if by the moment you run the frontend it detects that is trying to use the same port as the backend, you will be notified in the console with a message that says "Something is already running on port PORT", with PORT being the port you want to execute the frontend, and it will give you the chance of executing the frontend on a different port. In that case you put "yes" or "y" in console, an automatically it will execute the frontend in another port (usually the backend's port + 1), however, it is better to prevent this doing the explained above
+Have in mind that the port where the frontend will be executed must be different from the port where the backend is currently executing (by default in port 5000). Otherwise you will have a conflict between them. Anyway, if by the moment you run the frontend it detects that is trying to use the same port as the backend, you will be notified in the console with a message that says "Something is already running on port PORT", with PORT being the port you want to execute the frontend, and it will give you the chance of executing the frontend on a different port. In that case you put "yes" or "y" in console, and automatically it will execute the frontend in another port (usually the backend's port + 1). However, it is better to prevent this doing the explained above
 
 Also, the project asumes that the API is executed in port 5000, but in case you have executed the API on a different port, you must go to the "App.jsx" file in frontend/src directory, and in "fetchPlayersList" variable change the port in the link requested in the Axios.get (line 14) to the port where the API is executing
 
